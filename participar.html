@@ -22,25 +22,32 @@
       </ul>
     </nav>
   </header>
+  
   <main id="contenido-principal">
     <header class="encabezado-pagina">
       <p class="etiqueta">Súmate a la comunidad</p>
       <h1>Formulario de participación</h1>
       <p>Completa los datos para manifestar interés en una actividad.</p>
     </header>
+    
     <form class="formulario" action="confirmacion.html" method="get">
       <fieldset>
         <legend>Datos de contacto</legend>
+        
         <label for="nombre">Nombre completo</label>
         <input id="nombre" name="nombre" type="text" autocomplete="name" minlength="3" maxlength="80" required>
+        
         <label for="correo">Correo electrónico</label>
         <input id="correo" name="correo" type="email" autocomplete="email" required>
+        
         <label for="telefono">Teléfono chileno</label>
-        <input id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="912345678" pattern="[0-9]{9}" title="Ingresa 9 dígitos" aria-describedby="ayuda-telefono" required>
-        <p id="ayuda-telefono" class="ayuda">Ingresa 9 dígitos sin espacios (ej. 912345678).</p>
+        <p id="ayuda-telefono" class="etiqueta">Ingresa 9 dígitos, ejemplo: 912345678</p>
+        <input id="telefono" name="telefono" type="tel" autocomplete="tel" pattern="[0-9]{9}" aria-describedby="ayuda-telefono" required>
       </fieldset>
+      
       <fieldset>
         <legend>Preferencias</legend>
+        
         <label for="actividad">Actividad de interés</label>
         <select id="actividad" name="actividad" required>
           <option value="">Selecciona una actividad</option>
@@ -49,20 +56,27 @@
           <option value="programacion">Programación creativa</option>
           <option value="ceramica">Taller de Cerámica</option>
         </select>
-        <label for="disponibilidad">Fecha de disponibilidad (Opcional)</label>
-        <input type="date" id="disponibilidad" name="disponibilidad">
+        
+        <label for="fecha-disponible">Disponibilidad (Opcional)</label>
+        <input id="fecha-disponible" name="fecha_disponible" type="date">
+        
         <p>Modalidad preferida</p>
         <label><input type="radio" name="modalidad" value="presencial" required> Presencial</label>
         <label><input type="radio" name="modalidad" value="remota"> Remota</label>
+        
         <label for="motivacion">¿Por qué quieres participar?</label>
         <textarea id="motivacion" name="motivacion" rows="5" minlength="20" maxlength="500" required></textarea>
       </fieldset>
+      
       <label>
-        <input type="checkbox" name="acepta_condiciones" required> Confirmo que los datos son de prueba y acepto las condiciones.
+        <input type="checkbox" name="acepta_condiciones" required>
+        Confirmo que los datos son de prueba y acepto las condiciones.
       </label>
+      
       <button type="submit">Enviar solicitud de prueba</button>
     </form>
   </main>
+  
   <footer class="pie-sitio">
     <p><strong>Conecta Cultura</strong></p>
     <address>Contacto: <a href="mailto:hola@conectacultura.cl">hola@conectacultura.cl</a></address>
@@ -71,4 +85,3 @@
   <script src="assets/js/app.js"></script>
 </body>
 </html>
-
