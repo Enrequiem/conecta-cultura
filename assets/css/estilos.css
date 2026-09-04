@@ -15,14 +15,15 @@
   --ancho-contenido: 72rem;
 }
 
+/* 2. Base y tipografía */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* 2. Base y tipografía */
 html {
   scroll-behavior: smooth;
 }
+
 body {
   margin: 0;
   color: var(--color-texto);
@@ -30,15 +31,21 @@ body {
   font-family: var(--fuente-base);
   font-size: 1rem;
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+
 img, video {
   display: block;
   max-width: 100%;
   height: auto;
 }
+
 a {
   color: var(--color-primario);
 }
+
 h1, h2, h3 {
   line-height: 1.2;
   text-wrap: balance;
@@ -49,31 +56,54 @@ main {
   width: min(100% - 2rem, var(--ancho-contenido));
   margin-inline: auto;
   padding-block: 2rem 4rem;
+  flex: 1;
 }
+
 section + section {
   margin-top: 3rem;
 }
 
-/* 4. Navegación */
+/* 4. Navegación y Footer (Alineación visual - Autónomo) */
+.cabecera-sitio, .pie-sitio {
+  padding: 1.5rem max(1rem, calc((100% - var(--ancho-contenido)) / 2));
+}
+
 .cabecera-sitio {
-  padding: 1rem max(1rem, calc((100% - var(--ancho-contenido)) / 2));
   color: #ffffff;
   background: var(--color-primario-oscuro);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
+
+.pie-sitio {
+  color: #ffffff;
+  background: var(--color-texto);
+  margin-top: auto;
+}
+
+.pie-sitio a {
+  color: var(--color-acento);
+}
+
 .marca {
   color: #ffffff;
   font-size: 1.35rem;
   font-weight: 700;
   text-decoration: none;
 }
+
 .menu {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin: 1rem 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
+
 .menu a {
   display: inline-block;
   padding: 0.5rem 0.75rem;
@@ -81,21 +111,10 @@ section + section {
   border-radius: 0.5rem;
   text-decoration: none;
 }
+
 .menu a:hover,
 .menu a[aria-current="page"] {
   background: var(--color-primario);
-}
-
-/* Estilos de pie de página (Trabajo Autónomo) */
-.pie-sitio {
-  padding: 2rem max(1rem, calc((100% - var(--ancho-contenido)) / 2));
-  color: #ffffff;
-  background: var(--color-texto);
-  text-align: center;
-  margin-top: 2rem;
-}
-.pie-sitio a {
-  color: var(--color-acento);
 }
 
 /* 5. Componentes */
@@ -107,9 +126,8 @@ section + section {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.tarjeta,
-.mensaje-confirmacion,
-.formulario fieldset {
+
+.tarjeta, .mensaje-confirmacion, .formulario fieldset, .recurso-multimedia {
   padding: 1.5rem;
   background: var(--color-superficie);
   border: 1px solid var(--color-borde);
@@ -117,14 +135,10 @@ section + section {
   box-shadow: var(--sombra);
 }
 
-/* Grilla para las tarjetas en Inicio y Noticias (Adaptado de la guía 2 para que no se rompan al resetear CSS) */
 .grilla-tarjetas {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   gap: 1.5rem;
-}
-.grilla-tarjetas .tarjeta {
-  flex: 1 1 18rem;
 }
 
 .boton, button {
@@ -140,16 +154,18 @@ section + section {
   text-decoration: none;
   cursor: pointer;
 }
+
 .boton:hover, button:hover {
   background: var(--color-primario-oscuro);
 }
 
-/* Desafío de profundización: Botón secundario */
+/* Variante botón secundario (Desafío Guía 4) */
 .boton--secundario {
   color: var(--color-primario-oscuro);
   background: transparent;
   border: 2px solid currentColor;
 }
+
 .boton--secundario:hover {
   color: #ffffff;
   background: var(--color-primario-oscuro);
@@ -160,31 +176,38 @@ section + section {
   max-width: 100%;
   overflow-x: auto;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
   background: var(--color-superficie);
 }
+
 caption, th, td {
   padding: 0.75rem;
   text-align: left;
 }
+
 th, td {
   border: 1px solid var(--color-borde);
 }
+
 thead {
   color: #ffffff;
   background: var(--color-primario);
 }
+
 .formulario {
   display: grid;
   gap: 1rem;
   max-width: 42rem;
 }
+
 .formulario fieldset {
   display: grid;
   gap: 0.75rem;
 }
+
 .formulario input,
 .formulario select,
 .formulario textarea {
@@ -196,31 +219,26 @@ thead {
   border-radius: 0.4rem;
   font: inherit;
 }
+
 .formulario input[type="radio"],
 .formulario input[type="checkbox"] {
   width: auto;
 }
-.ayuda {
-  font-size: 0.85em;
-  color: var(--color-texto-suave);
-  margin-top: -0.5rem;
-}
 
-/* 7. Multimedia y utilidades (Accesibilidad) */
+/* 7. Accesibilidad y estados */
 :focus-visible {
   outline: 3px solid var(--color-acento);
   outline-offset: 3px;
 }
-input:required,
-select:required,
-textarea:required {
+
+input:required, select:required, textarea:required {
   border-left: 0.3rem solid var(--color-primario);
 }
-input:focus,
-select:focus,
-textarea:focus {
+
+input:focus, select:focus, textarea:focus {
   border-color: var(--color-primario);
 }
+
 .salto-contenido {
   position: absolute;
   padding: 0.6rem 1rem;
@@ -228,6 +246,7 @@ textarea:focus {
   background: var(--color-primario-oscuro);
   transform: translateY(-150%);
 }
+
 .salto-contenido:focus {
   transform: translateY(0);
 }
